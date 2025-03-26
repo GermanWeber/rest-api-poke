@@ -1,0 +1,47 @@
+###recuperar todos los pokemones
+
+GET http://localhost:3000/pokemones
+
+###recuperar un pokemon por id
+GET http://localhost:3000/pokemones/90
+
+###recuperar un pokemon por nombre
+GET http://localhost:3000/pokemones?name=ditto
+
+
+###recuperar un pokemon por tipo
+GET http://localhost:3000/pokemones?type=grass
+
+###Crear un pokemon
+POST http://localhost:3000/pokemones
+Content-Type: application/json
+
+{
+    "name": {
+        "english": "german",
+        "japanese": "naniii",
+        "chinese": "妙蛙花",
+        "french": "omele du fromage"
+    },
+    "type": ["god"],
+    "base": {
+        "hp": 100000,
+        "attack": 100000,
+        "defense": 10000000,
+        "speed": 10000000,
+        "height": 2,
+        "weight": 80
+    }
+
+  
+}
+### cambiar un pokemon
+PATCH  http://localhost:3000/pokemones/id=899
+Content-Type: application/json
+
+{
+    
+    "name": {
+        "english": "La rana con una flor en la espalda"
+    }
+}
