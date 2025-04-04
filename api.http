@@ -3,7 +3,7 @@
 GET http://localhost:3000/pokemones
 
 ###recuperar un pokemon por id
-GET http://localhost:3000/pokemones/90
+GET http://localhost:3000/pokemones/13
 
 ###recuperar un pokemon por nombre
 GET http://localhost:3000/pokemones?name=ditto

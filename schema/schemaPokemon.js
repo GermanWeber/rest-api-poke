@@ -1,4 +1,4 @@
-const zod = require('zod');
+import zod from 'zod';
 
 
 
@@ -21,14 +21,10 @@ const pokemonSchema = zod.object({
 })
 
 
-function validatePokemon(object) {
+export function validatePokemon(object) {
     return pokemonSchema.safeParse(object)
 }
-function parcialValidatePokemon(object){
+export function parcialValidatePokemon(object){
     return pokemonSchema.partial().safeParse(object)
 }
 
-module.exports = {
-    validatePokemon, 
-    parcialValidatePokemon,
-};

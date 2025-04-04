@@ -1,0 +1,501 @@
+
+@font-face {
+  font-family: 'Pokemon';
+  src: url('http://localhost:3000/fonts/PokemonSolid.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+body {
+    --font-family: Arial, sans-serif;
+    background-color: rgb(246, 207, 207);
+    color: black;
+    margin: 0;
+    padding: 0;
+  }
+  main {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+    padding: 1rem;
+  }
+  article {
+    border: 5px solid ;
+    border-radius: 5px;
+    padding: 1rem;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  /* article :hover {
+    transform: scale(1.1);
+    transition: 200ms;
+  }  */
+
+
+  #btn-buscar{
+    background-color: #ffcc03;
+    padding: 10px 20px;
+    border: 5px solid #415fa9;
+    border-radius: 5rem;
+    font-size: 20px;
+    font-family: sans-serif;
+  }
+
+  #search{
+    background-color: rgb(255 255 255);
+    padding: 10px 20px;
+    border: 2px solid rgb(141, 140, 140);
+    border-radius: 3px;
+    font-size: 20px;
+    font-family: sans-serif;
+  }
+
+  .div-titulo{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .pokemon-text {
+    font-family: 'Pokemon', sans-serif;
+    margin: 0;
+    color: #ffcc03;
+    -webkit-text-stroke: 5px transparent; /* Evita que el borde cubra el color */
+    text-shadow: 
+      -2px -2px 0 #415fa9,  
+       2px -2px 0 #415fa9,  
+      -2px  2px 0 #415fa9,  
+       2px  2px 0 #415fa9,
+       0px  0px 20px #415fa9;
+    /* -webkit-text-stroke: 2px #415fa9;   */
+  }
+  h1{
+    text-transform: uppercase
+    
+  }
+  .main-title{
+    font-size: 80px;
+  }
+
+  .imagen-article {
+    width: 100%;
+    max-height: 196px;
+    object-fit: contain;
+  }
+
+  article:hover .imagen-article, .article-title{
+    transform: scale(1.1);
+    transition: transform 200ms ease-in-out;
+  }
+
+  article:hover h1{
+    transform: translateY(-15px) scale(130%);
+    transition: transform 200ms ease-in-out;
+  }
+
+  .type-img{
+    width: 90px;
+  }
+  .seccion-tipos{
+    display: flex;
+    position: fixed;
+    transform: translateY(-90px);
+    border-left: 10px solid;
+    border-right: 10px solid;
+    border-top: 10px solid;
+    background-color: white !important;
+    border-radius: 5rem 5rem 0rem 0rem;
+  }
+  .tipos p{
+    margin: 0;
+    font-family: sans-serif;
+    transform: translateY(-15px);
+
+  }
+  
+
+  .btn-img{
+    max-width: 100%;
+    width: 80px;
+
+  }
+
+  .imagen-modal {
+    max-width: 100%;
+    width: 320px;
+    max-height: 320px;
+    position: relative;
+    left: 11rem;
+    object-fit: contain;
+
+  }
+
+.modal h1{
+  font-size: 70px;
+}  
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  .modal-content {
+    margin: 10% auto;
+    padding: 20px;
+    width: 50%;
+    color: black;
+    border-radius: 10px;
+    text-align: center;
+    border: 10px solid ;
+    transform: translateY(-70px);
+  }
+
+  .modal-id{
+    
+    position: absolute;
+    transform: translateY(-100px) translateX(50px);
+    font-size: 10rem;
+    font-weight: 800;
+    z-index: -1;
+    color: rgb(216, 213, 213);
+    -webkit-text-stroke: 5px transparent; /* Evita que el borde cubra el color */
+    text-shadow: 
+      -2px -2px 0 #7b7d81,  
+       2px -2px 0 #7b7d81,  
+      -2px  2px 0 #7b7d81,  
+       2px  2px 0 #7b7d81,
+       0px  0px 20px #7b7d81;
+  }
+
+  .modal-p{
+    font-size: 20px;
+    
+  }
+
+  @media (max-width: 700px){
+    .modal-id{
+      position: absolute;
+      top: 14rem;
+      left: 30%;
+      transform: translateX(-50%);
+      font-size: 4rem;
+      font-weight: 800;
+      z-index: 0;
+      color: rgb(216, 213, 213);
+    }
+
+    .imagen-modal {
+      max-width: 100%;
+      width: 200px;
+      position: relative;
+      left: 4rem;
+  
+    }
+    .modal-content{
+      width: 80%;
+      transform: translateY(150px);
+      left: -5px;
+    position: absolute;
+    }
+    .modal h1{
+      font-size: 50px;
+    }
+
+    .modal-p{
+      font-size: 20px;
+    }
+
+  }
+
+
+  .article-id{
+    position: absolute;
+    top: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 5rem;
+    font-weight: 900;
+    z-index: -1;
+    color: rgb(216, 213, 213);
+  }
+
+  .modal-info {
+    background-color: white!important;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 1rem;
+    border: 10px solid ;
+    border-radius: 0rem 5rem 5rem 5rem;
+  }
+
+  .close {
+    float: right;
+    font-size: 28px;
+    cursor: pointer;
+  }
+
+  ul {
+    display: flex;
+    list-style-type: none;
+
+}
+
+header{
+    padding-block: 1rem;
+    box-shadow: 0 0 2rem rgb(141, 140, 140);
+    background-color: rgb(232, 228, 228);
+}
+
+button {
+    background-color: transparent;
+    border-radius: 0;
+    border: 0;
+} 
+
+main{
+    
+    padding: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.nav{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+    padding-inline: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.nav-list{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    border-radius: 100px;
+    justify-content: center;
+}
+
+.btn-header{
+    background-color: rgb(232, 228, 228);
+    padding: 1px;
+    margin: 3px;
+    border-radius: 100vmax;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: 600;
+    border: 2px solid;
+    
+    
+    
+}
+
+.btn-header:hover{
+    transform:  scale(1.1);
+    
+    transition: 200ms;
+}
+
+
+.bg-Normal{
+  background-image: url('http://localhost:3000/images/symbolBG/background2/normal.jpg');
+  background-size: cover;
+  background-position: center;
+}
+.bg-Fire{
+  background-image: url('http://localhost:3000/images/symbolBG/background2/fire.jpg');
+  background-size: cover;
+  background-position: center;
+}
+.bg-Water{
+  background-image: url('http://localhost:3000/images/symbolBG/background2/water.jpg');
+  background-size: cover;
+  background-position: center;
+}
+.bg-Grass{
+  background-image: url('http://localhost:3000/images/symbolBG/background2/grass.png');
+  background-size: cover;
+  background-position: center;
+}
+.bg-Electric{
+  background-image: url('http://localhost:3000/images/symbolBG/background2/electric.jpg');
+  background-size: cover;
+  background-position: center;
+}
+.bg-Ice{
+  background-image: url('http://localhost:3000/images/symbolBG/background2/ice.png');
+  background-size: cover;
+  background-position: center;
+}
+.bg-Fighting{
+  background-image: url('http://localhost:3000/images/symbolBG/background2/fighting.png');
+  background-size: cover;
+  background-position: center;
+}
+.bg-Poison{
+  background-image: url('http://localhost:3000/images/symbolBG/background2/poison.png');
+  background-size: cover;
+  background-position: center;
+}
+.bg-Ground{
+  background-image: url('http://localhost:3000/images/symbolBG/background2/ground.png');
+  background-size: cover;
+  background-position: center;
+}
+.bg-Flying{
+  background-image: url('http://localhost:3000/images/symbolBG/background2/flying.jpg');
+  background-size: cover;
+  background-position: center;
+}
+.bg-Psychic{
+  background-image: url('http://localhost:3000/images/symbolBG/background2/psychic.png');
+  background-size: cover;
+  background-position: center;
+}
+.bg-Bug{
+  background-image: url('http://localhost:3000/images/symbolBG/background2/bug.png');
+  background-size: cover;
+  background-position: center;
+}
+.bg-Rock{
+  background-image: url('http://localhost:3000/images/symbolBG/background2/rock.png');
+  background-size: cover;
+  background-position: center;
+}
+.bg-Ghost{
+  background-image: url('http://localhost:3000/images/symbolBG/background2/ghost.png');
+  background-size: cover;
+  background-position: center;
+}
+.bg-Dark{
+  background-image: url('http://localhost:3000/images/symbolBG/background2/dark.png');
+  background-size: contain;
+  background-position: center;
+}
+.bg-Dragon{
+  background-image: url('http://localhost:3000/images/symbolBG/background2/dragon.png');
+  background-size: cover;
+  background-position: center;
+}
+.bg-Steel{
+  background-image: url('http://localhost:3000/images/symbolBG/background2/steel.png');
+  background-size: cover;
+  background-position: center;
+}
+.bg-Fairy{
+  background-image: url('http://localhost:3000/images/symbolBG/background2/fairy.png');
+  background-size: cover;
+  background-position: center;
+}
+
+#modal-content{
+  background-position-y: -90px;
+}
+
+/* .bg-Normal:hover,
+.bg-Fire:hover,
+.bg-Water:hover,
+.bg-Grass:hover,
+.bg-Electric:hover,
+.bg-Ice:hover,
+.bg-Fighting:hover,
+.bg-Poison:hover,
+.bg-Ground:hover,
+.bg-Flying:hover,
+.bg-Psychic:hover,
+.bg-Bug:hover,
+.bg-Rock:hover,
+.bg-Ghost:hover,
+.bg-Dark:hover,
+.bg-Dragon:hover,
+.bg-Steel:hover,
+.bg-Fairy:hover {
+    transform: scale(1.1);
+    transition: transform 200ms ease-in-out;
+} */
+
+.Normal{
+  background-color: #c1bcb6;
+  border-color: #8A8A59;
+}
+
+.Fire{
+    background-color: #e46727;
+    border-color: #cc2900;
+
+}
+.Water{
+  background-color: #0082be; border-color: #1E50A2;
+
+}
+.Grass{
+  background-color: #7fd244; border-color: #4E8234;
+
+}
+.Electric{
+  background-color: #F7D02C; border-color: #A1871F;
+
+}
+.Ice{
+  background-color: #96D9D6; border-color: #638D8D;
+
+}
+.Fighting{
+  background-color: #C22E28; border-color: #7D1F1A;
+
+}
+.Poison{
+  background-color: #A33EA1; border-color: #682A68;
+
+}
+.Ground{
+  background-color: #b68744; border-color: #927D44;
+
+}
+.Flying{
+  background-color: #b7e2ff; border-color: #32739e;
+
+}
+.Psychic{
+  background-color: #F95587; border-color: #A13959;
+
+}
+.Bug{
+  background-color: #A6B91A; border-color: #6D7815;
+
+}
+.Rock{
+  background-color: #c7c494; border-color: #786824;
+
+}
+.Ghost{
+  background-color: #735797; border-color: #4D3A69;
+ 
+}
+.Dark{
+  background-color: #5c514f; border-color: #2c231d;
+
+}
+.Dragon{
+  background-color: #6F35FC; border-color: #4A2197;
+
+}
+.Steel{
+  background-color: #B7B7CE; border-color: #787887; 
+
+}
+.Fairy{
+  background-color: #D685AD; border-color: #9B6470;
+
+}
